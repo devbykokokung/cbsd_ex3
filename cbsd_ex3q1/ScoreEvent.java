@@ -1,8 +1,5 @@
-import java.util.Date;
-
 public class ScoreEvent {
     private final String scoreLine;
-    private final Date timestamp;
     private final Object source;
     private final String eventType;
     
@@ -10,7 +7,6 @@ public class ScoreEvent {
     public ScoreEvent(Object source, String scoreLine) {
         this.source = source;
         this.scoreLine = scoreLine;
-        this.timestamp = new Date();
         this.eventType = "SCORE_CHANGE";
     }
 
@@ -23,17 +19,13 @@ public class ScoreEvent {
         return this.source;
     }
     
-    public Date getTimestamp() {
-        return this.timestamp;
-    }
-
     public String getEventType() {
         return this.eventType;
     }
     
     @Override
     public String toString() {
-        return String.format("ScoreEvent{type='%s', score='%s', time=%s}", 
-                           eventType, scoreLine, timestamp);
+        return String.format("ScoreEvent{type='%s', score='%s'}", 
+                           eventType, scoreLine);
     }
 }
